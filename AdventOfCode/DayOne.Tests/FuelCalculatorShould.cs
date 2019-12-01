@@ -30,6 +30,7 @@ namespace DayOne.Tests
             calculator.FuelNeeds.ShouldBeOfType<List<FuelNeed>>();
             calculator.FuelNeeds.First().ModuleMass.ShouldBe(12);
             calculator.FuelNeeds.First().ForModule.ShouldBe(2);
+            calculator.FuelNeeds.First().ForFuel.ShouldBe(0);
         }
 
         [Fact]
@@ -49,7 +50,7 @@ namespace DayOne.Tests
 
             var fuelForFuel = calculator.CalcFuelForFuel(2);
 
-            fuelForFuel.ShouldBe(2);
+            fuelForFuel.ShouldBe(0);
         }
 
         [Fact]

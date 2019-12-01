@@ -21,7 +21,8 @@ namespace DayOne
             FuelNeeds = file.Select(line => new FuelNeed
             {
                 ModuleMass = int.Parse(line),
-                ForModule = CalcFuelForMass(int.Parse(line))
+                ForModule = CalcFuelForMass(int.Parse(line)),
+                ForFuel = CalcFuelForFuel(CalcFuelForMass(int.Parse(line)))
             })
             .ToList();
         }
@@ -40,7 +41,8 @@ namespace DayOne
 
         public int CalcFuelForFuel(int fuelAmount)
         {
-            return CalcFuelToZero(fuelAmount);
+            var calcAmount = CalcFuelToZero(fuelAmount);
+            return calcAmount <= fuelAmount ? 0 : calcAmount;
         }
 
         public int CalcFuelToZero(int startingFuel)

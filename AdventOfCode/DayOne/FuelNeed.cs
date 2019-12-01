@@ -8,5 +8,6 @@ namespace DayOne
     {
         public int ModuleMass { get; set; }
         public int ForModule { get; set; }
+        public int ForFuel { get; set; }
     }
 }
