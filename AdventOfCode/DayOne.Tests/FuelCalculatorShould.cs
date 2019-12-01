@@ -7,8 +7,9 @@ namespace DayOne.Tests
     public class FuelCalculatorShould
     {
         [Theory]
-        [InlineData(12,2)]
+        [InlineData(12, 2)]
         [InlineData(14, 2)]
+        [InlineData(1969, 654)]
         public void ReturnNecssaryFuel(int inputMass, int neededFuel)
         {
             var calculator = new FuelCalculator();
