@@ -27,5 +27,10 @@ namespace DayOne
             int roundedMass = (int)Math.Round(dividedMass);
             return roundedMass - SUBTRACTOR;
         }
+
+        public int CalculateFuelForAllModules()
+        {
+            return Masses.Select(mass => CalcFuelForMass(mass)).Sum();
+        }
     }
 }

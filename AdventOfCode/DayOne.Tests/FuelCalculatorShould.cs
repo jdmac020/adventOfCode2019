@@ -29,5 +29,15 @@ namespace DayOne.Tests
             calculator.Masses.ShouldBeOfType<List<int>>();
             calculator.Masses.ShouldNotBeNull();
         }
+
+        [Fact]
+        public void ReturnFuelForAllMassesInList()
+        {
+            var calculator = new FuelCalculator("testData.txt");
+
+            var totalFuel = calculator.CalculateFuelForAllModules();
+
+            totalFuel.ShouldBe(34241);
+        }
     }
 }
