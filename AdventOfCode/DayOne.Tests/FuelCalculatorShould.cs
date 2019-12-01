@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using Shouldly;
+using System.Collections.Generic;
 
 namespace DayOne.Tests
 {
@@ -18,6 +19,15 @@ namespace DayOne.Tests
             var calculatedFuel = calculator.CalcFuelForMass(inputMass);
 
             calculatedFuel.ShouldBe(neededFuel);
+        }
+
+        [Fact]
+        public void CreateListOfIntsWhenGivenFileName()
+        {
+            var calculator = new FuelCalculator("testData.txt");
+
+            calculator.Masses.ShouldBeOfType<List<int>>();
+            calculator.Masses.ShouldNotBeNull();
         }
     }
 }
