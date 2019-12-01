@@ -7,5 +7,6 @@ namespace DayOne
     public struct FuelNeed
     {
         public int ModuleMass { get; set; }
+        public int ForModule { get; set; }
     }
 }
