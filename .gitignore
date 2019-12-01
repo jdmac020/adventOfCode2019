@@ -1,0 +1,5 @@
+# generated code and such
+**/bin
+**/obj
+**/.vs
+**/v15
