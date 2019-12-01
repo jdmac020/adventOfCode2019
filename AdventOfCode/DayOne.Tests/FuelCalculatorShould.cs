@@ -8,6 +8,7 @@ namespace DayOne.Tests
     {
         [Theory]
         [InlineData(12,2)]
+        [InlineData(14, 2)]
         public void ReturnNecssaryFuel(int inputMass, int neededFuel)
         {
             var calculator = new FuelCalculator();
