@@ -40,5 +40,25 @@ namespace DayOne.Tests
 
             totalFuel.ShouldBe(34241);
         }
+
+        [Fact]
+        public void ReturnFuelNeededForFuel()
+        {
+            var calculator = new FuelCalculator();
+
+            var fuelForFuel = calculator.CalcFuelForFuel(2);
+
+            fuelForFuel.ShouldBe(0);
+        }
+
+        [Fact(Skip = "Reworking")]
+        public void AccumulateFuelIfNotZero()
+        {
+            var calculator = new FuelCalculator();
+
+            var fuelForFuel = calculator.CalcFuelForFuel(36);
+
+            fuelForFuel.ShouldBe(8);
+        }
     }
 }
