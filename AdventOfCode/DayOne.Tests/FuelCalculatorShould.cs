@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using Shouldly;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DayOne.Tests
 {
@@ -22,12 +23,12 @@ namespace DayOne.Tests
         }
 
         [Fact]
-        public void CreateListOfIntsWhenGivenFileName()
+        public void CreateListOfFuelNeedsWhenGivenFileName()
         {
             var calculator = new FuelCalculator("testData.txt");
 
-            calculator.Masses.ShouldBeOfType<List<int>>();
-            calculator.Masses.ShouldNotBeNull();
+            calculator.FuelNeeds.ShouldBeOfType<List<FuelNeed>>();
+            calculator.FuelNeeds.First().ModuleMass.ShouldBe(12);
         }
 
         [Fact]

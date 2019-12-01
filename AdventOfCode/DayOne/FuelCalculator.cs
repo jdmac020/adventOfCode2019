@@ -7,7 +7,7 @@ namespace DayOne
 {
     public class FuelCalculator
     {
-        public List<int> Masses { get; }
+        public List<FuelNeed> FuelNeeds { get; }
 
         private const int DIVISOR = 3;
         private const int SUBTRACTOR = 2;
@@ -18,7 +18,11 @@ namespace DayOne
         {
             var file = File.ReadAllLines(filePath);
 
-            Masses = file.Select(line => int.Parse(line)).ToList();
+            FuelNeeds = file.Select(line => new FuelNeed
+            {
+                ModuleMass = int.Parse(line)
+            })
+            .ToList();
         }
 
         public int CalcFuelForMass(int inputMass)
@@ -30,7 +34,7 @@ namespace DayOne
 
         public int CalculateFuelForAllModules()
         {
-            return Masses.Select(mass => CalcFuelForMass(mass)).Sum();
+            return FuelNeeds.Select(mass => CalcFuelForMass(mass.ModuleMass)).Sum();
         }
     }
 }
