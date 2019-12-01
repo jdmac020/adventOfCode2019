@@ -22,7 +22,7 @@ namespace DayOne
             {
                 ModuleMass = int.Parse(line),
                 ForModule = CalcFuelForMass(int.Parse(line)),
-                ForFuel = CalcFuelForFuel(CalcFuelForMass(int.Parse(line)))
+                WithFuel = CalcFuelForFuel(CalcFuelForMass(int.Parse(line)))
             })
             .ToList();
         }
@@ -36,13 +36,12 @@ namespace DayOne
 
         public int CalculateFuelForAllModules()
         {
-            return FuelNeeds.Select(mass => CalcFuelForMass(mass.ModuleMass)).Sum();
+            return FuelNeeds.Select(mass => mass.WithFuel).Sum();
         }
 
         public int CalcFuelForFuel(int fuelAmount)
         {
-            var calcAmount = CalcFuelToZero(fuelAmount);
-            return calcAmount <= fuelAmount ? 0 : calcAmount;
+            return CalcFuelToZero(fuelAmount);
         }
 
         public int CalcFuelToZero(int startingFuel)
