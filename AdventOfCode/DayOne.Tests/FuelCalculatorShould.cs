@@ -48,7 +48,7 @@ namespace DayOne.Tests
         {
             var calculator = new FuelCalculator();
 
-            var fuelForFuel = calculator.CalcFuelForFuel(2);
+            var fuelForFuel = calculator.CalcFuelforModuleAndFuel(2);
 
             fuelForFuel.ShouldBe(2);
         }
@@ -58,7 +58,7 @@ namespace DayOne.Tests
         {
             var calculator = new FuelCalculator();
 
-            var fuelForFuel = calculator.CalcFuelForFuel(654);
+            var fuelForFuel = calculator.CalcFuelforModuleAndFuel(654);
 
             fuelForFuel.ShouldBe(966);
         }
