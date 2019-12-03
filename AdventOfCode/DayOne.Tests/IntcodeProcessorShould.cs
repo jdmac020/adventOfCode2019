@@ -180,7 +180,7 @@ namespace AdventLibrary.Tests
             intProcessor.Code.ShouldBe(expected);
         }
 
-        [Fact(Skip = "Prevent out of bounds on stop segment")]
+        [Fact]
         public void ExecuteAllSegements()
         {
             var input = "1,9,10,3,2,3,11,0,99,30,40,50";

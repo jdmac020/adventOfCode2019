@@ -53,6 +53,7 @@ namespace AdventLibrary
 
             if (code == OpCodes.Stop)
             {
+                // TODO(maybe): create a stop segment type
                 return new CodeSegment
                 {
                     Index = startPosition,
