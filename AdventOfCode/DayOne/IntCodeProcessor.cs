@@ -62,6 +62,10 @@ namespace AdventLibrary
                     Code[segment.UpdatePosition] = result;
                     break;
                 case OpCodes.Multiplication:
+                    args = segment.Arguments;
+                    result = args.Item1 * args.Item2;
+                    Code[segment.UpdatePosition] = result;
+                    break;
                 case OpCodes.Stop:
                 default:
                     break;

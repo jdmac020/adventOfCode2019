@@ -120,5 +120,24 @@ namespace AdventLibrary.Tests
 
             intProcessor.Code.ShouldBe(expected);
         }
+
+        [Fact]
+        public void ExecuteMultiplicationCodeSegment()
+        {
+            var input = "1,9,10,3,2,3,11,0,99,30,40,50";
+            var testSegment = new CodeSegment
+            {
+                Index = 4,
+                OpCode = OpCodes.Multiplication,
+                Arguments = (3, 50),
+                UpdatePosition = 0
+            };
+            int[] expected = new int[] { 150, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50 };
+            var intProcessor = new IntCodeProcessor(input);
+
+            intProcessor.RunSegment(testSegment);
+
+            intProcessor.Code.ShouldBe(expected);
+        }
     }
 }
