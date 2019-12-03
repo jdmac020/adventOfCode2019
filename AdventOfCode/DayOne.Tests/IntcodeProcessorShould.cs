@@ -15,5 +15,16 @@ namespace AdventLibrary.Tests
             intProcessor.Code[0].ShouldBe(1);
             intProcessor.Code[11].ShouldBe(50);
         }
+
+        [Fact]
+        public void IdentifyAdditionCode()
+        {
+            var input = "1,9,10,3";
+            var intProcessor = new IntCodeProcessor(input);
+
+            OpCodes actual = intProcessor.FindOperation();
+
+            actual.ShouldBe(OpCodes.Addition);
+        }
     }
 }
