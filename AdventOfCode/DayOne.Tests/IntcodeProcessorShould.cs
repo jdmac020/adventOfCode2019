@@ -80,5 +80,26 @@ namespace AdventLibrary.Tests
 
             result.ShouldBe(1);
         }
+
+        [Fact]
+        public void GenerateCodeSegment()
+        {
+            var input = "1,9,10,3,2,3,11,0,99,30,40,50";
+            var expected = new CodeSegment
+            {
+                Index = 0,
+                OpCode = OpCodes.Addition,
+                Arguments = (9, 10),
+                UpdatePosition = 3
+            };
+            var intProcessor = new IntCodeProcessor(input);
+
+            CodeSegment actual = intProcessor.GenerateCodeSegment();
+
+            actual.Index.ShouldBe(expected.Index);
+            actual.OpCode.ShouldBe(expected.OpCode);
+            actual.Arguments.ShouldBe(expected.Arguments);
+            actual.UpdatePosition.ShouldBe(expected.UpdatePosition);
+        }
     }
 }

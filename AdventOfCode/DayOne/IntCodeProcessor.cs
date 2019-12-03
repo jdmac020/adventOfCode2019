@@ -40,6 +40,17 @@ namespace AdventLibrary
         {
             return Code[3];
         }
+
+        public CodeSegment GenerateCodeSegment()
+        {
+            return new CodeSegment
+            {
+                Index = 0,
+                OpCode = FindOperation(),
+                Arguments = FindArguments(),
+                UpdatePosition = FindUpdateIndex()
+            };
+        }
     }
 
     public enum OpCodes
