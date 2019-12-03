@@ -17,14 +17,24 @@ namespace AdventLibrary
         {
             var valueAtZero = Code[0];
 
-            if (valueAtZero == (int)OpCodes.Addition) return OpCodes.Addition;
-
+            switch (valueAtZero)
+            {
+                case (int)OpCodes.Addition:
+                    return OpCodes.Addition;
+                case (int)OpCodes.Multiplication:
+                    return OpCodes.Multiplication;
+                default:
+                    break;
+            }
+            
             return (OpCodes)99;
         }
     }
 
     public enum OpCodes
     {
-        Addition = 1
+        Addition = 1,
+        Multiplication = 2,
+        Stop = 99
     }
 }

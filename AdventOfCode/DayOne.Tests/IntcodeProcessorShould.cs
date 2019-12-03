@@ -26,5 +26,27 @@ namespace AdventLibrary.Tests
 
             actual.ShouldBe(OpCodes.Addition);
         }
+
+        [Fact]
+        public void IdentifyMultiplicationCode()
+        {
+            var input = "2,3,11,0";
+            var intProcessor = new IntCodeProcessor(input);
+
+            OpCodes actual = intProcessor.FindOperation();
+
+            actual.ShouldBe(OpCodes.Multiplication);
+        }
+
+        [Fact]
+        public void IdentifyStopCode()
+        {
+            var input = "99,30,40,50";
+            var intProcessor = new IntCodeProcessor(input);
+
+            OpCodes actual = intProcessor.FindOperation();
+
+            actual.ShouldBe(OpCodes.Stop);
+        }
     }
 }
