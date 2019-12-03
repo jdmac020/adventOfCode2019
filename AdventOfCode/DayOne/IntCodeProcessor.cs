@@ -8,6 +8,10 @@ namespace AdventLibrary
     {
         public int[] Code { get; }
 
+        private const int ARG_ONE_ADJUST = 1;
+        private const int ARG_TWO_ADJUST = 2;
+        private const int UPDATE_POS_ADJUST = 3;
+
         public IntCodeProcessor(string input)
         {
             var split = input.Split(',');
@@ -33,12 +37,12 @@ namespace AdventLibrary
 
         public (int, int) FindArguments(int startPosition)
         {
-            return (Code[startPosition + 1],Code[startPosition + 2]);
+            return (Code[startPosition + ARG_ONE_ADJUST],Code[startPosition + ARG_TWO_ADJUST]);
         }
 
         public int FindUpdateIndex(int startPosition)
         {
-            return Code[startPosition + 3];
+            return Code[startPosition + UPDATE_POS_ADJUST];
         }
 
         public CodeSegment GenerateCodeSegment(int startPosition)
