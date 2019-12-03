@@ -67,7 +67,7 @@ namespace AdventLibrary.Tests
 
             (int, int) result = intProcessor.FindArguments(0);
 
-            result.ShouldBe((3, 3));
+            result.ShouldBe((1, 1));
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace AdventLibrary.Tests
             {
                 Index = 0,
                 OpCode = OpCodes.Addition,
-                Arguments = (9, 10),
+                Arguments = (30, 40),
                 UpdatePosition = 3
             };
             var intProcessor = new IntCodeProcessor(input);
@@ -159,7 +159,7 @@ namespace AdventLibrary.Tests
             intProcessor.Code.ShouldBe(expected);
         }
 
-        [Fact(Skip = "Rework Generate Segment")]
+        [Fact(Skip = "Fix argument values")]
         public void ExecuteAllSegements()
         {
             var input = "1,9,10,3,2,3,11,0,99,30,40,50";

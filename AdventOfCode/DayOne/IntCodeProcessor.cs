@@ -37,7 +37,9 @@ namespace AdventLibrary
 
         public (int, int) FindArguments(int startPosition)
         {
-            return (Code[startPosition + ARG_ONE_ADJUST],Code[startPosition + ARG_TWO_ADJUST]);
+            var argOnePos = Code[startPosition + ARG_ONE_ADJUST];
+            var argTwoPos = Code[startPosition + ARG_TWO_ADJUST];
+            return (Code[argOnePos],Code[argTwoPos]);
         }
 
         public int FindUpdateIndex(int startPosition)
@@ -78,7 +80,14 @@ namespace AdventLibrary
 
         public void RunIntCode()
         {
-            
+            var startPosition = 0;
+            var segment = GenerateCodeSegment(startPosition);
+            while (segment.OpCode != OpCodes.Stop)
+            {
+                startPosition += 4;
+                RunSegment(segment);
+                segment = GenerateCodeSegment(startPosition);
+            }
         }
     }
 
