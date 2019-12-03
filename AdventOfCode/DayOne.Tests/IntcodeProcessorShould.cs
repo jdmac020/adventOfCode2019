@@ -23,7 +23,7 @@ namespace AdventLibrary.Tests
             var input = "1,9,10,3";
             var intProcessor = new IntCodeProcessor(input);
 
-            OpCodes actual = intProcessor.FindOperation();
+            OpCodes actual = intProcessor.FindOperation(0);
 
             actual.ShouldBe(OpCodes.Addition);
         }
@@ -34,7 +34,7 @@ namespace AdventLibrary.Tests
             var input = "2,3,11,0";
             var intProcessor = new IntCodeProcessor(input);
 
-            OpCodes actual = intProcessor.FindOperation();
+            OpCodes actual = intProcessor.FindOperation(0);
 
             actual.ShouldBe(OpCodes.Multiplication);
         }
@@ -45,7 +45,7 @@ namespace AdventLibrary.Tests
             var input = "99,30,40,50";
             var intProcessor = new IntCodeProcessor(input);
 
-            OpCodes actual = intProcessor.FindOperation();
+            OpCodes actual = intProcessor.FindOperation(0);
 
             actual.ShouldBe(OpCodes.Stop);
         }
@@ -56,7 +56,7 @@ namespace AdventLibrary.Tests
             var input = "4,30,40,50";
             var intProcessor = new IntCodeProcessor(input);
 
-            Should.Throw<InvalidEnumArgumentException>(() => intProcessor.FindOperation());
+            Should.Throw<InvalidEnumArgumentException>(() => intProcessor.FindOperation(0));
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace AdventLibrary.Tests
             var input = "1,3,3,1";
             var intProcessor = new IntCodeProcessor(input);
 
-            (int, int) result = intProcessor.FindArguments();
+            (int, int) result = intProcessor.FindArguments(0);
 
             result.ShouldBe((3, 3));
         }
@@ -76,7 +76,7 @@ namespace AdventLibrary.Tests
             var input = "1,3,3,1";
             var intProcessor = new IntCodeProcessor(input);
 
-            int result = intProcessor.FindUpdateIndex();
+            int result = intProcessor.FindUpdateIndex(0);
 
             result.ShouldBe(1);
         }
@@ -94,7 +94,7 @@ namespace AdventLibrary.Tests
             };
             var intProcessor = new IntCodeProcessor(input);
 
-            CodeSegment actual = intProcessor.GenerateCodeSegment();
+            CodeSegment actual = intProcessor.GenerateCodeSegment(0);
 
             actual.Index.ShouldBe(expected.Index);
             actual.OpCode.ShouldBe(expected.OpCode);
@@ -155,6 +155,18 @@ namespace AdventLibrary.Tests
             var intProcessor = new IntCodeProcessor(input);
 
             intProcessor.RunSegment(testSegment);
+
+            intProcessor.Code.ShouldBe(expected);
+        }
+
+        [Fact(Skip = "Rework Generate Segment")]
+        public void ExecuteAllSegements()
+        {
+            var input = "1,9,10,3,2,3,11,0,99,30,40,50";
+            int[] expected = new int[] { 3500, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50 };
+            var intProcessor = new IntCodeProcessor(input);
+
+            intProcessor.RunIntCode();
 
             intProcessor.Code.ShouldBe(expected);
         }

@@ -14,9 +14,9 @@ namespace AdventLibrary
             Code = split.Select(item => int.Parse(item)).ToArray();
         }
 
-        public OpCodes FindOperation()
+        public OpCodes FindOperation(int startPosition)
         {
-            var valueAtZero = Code[0];
+            var valueAtZero = Code[startPosition];
 
             switch (valueAtZero)
             {
@@ -31,24 +31,24 @@ namespace AdventLibrary
             }
         }
 
-        public (int, int) FindArguments()
+        public (int, int) FindArguments(int startPosition)
         {
-            return (Code[1],Code[2]);
+            return (Code[startPosition + 1],Code[startPosition + 2]);
         }
 
-        public int FindUpdateIndex()
+        public int FindUpdateIndex(int startPosition)
         {
-            return Code[3];
+            return Code[startPosition + 3];
         }
 
-        public CodeSegment GenerateCodeSegment()
+        public CodeSegment GenerateCodeSegment(int startPosition)
         {
             return new CodeSegment
             {
-                Index = 0,
-                OpCode = FindOperation(),
-                Arguments = FindArguments(),
-                UpdatePosition = FindUpdateIndex()
+                Index = startPosition,
+                OpCode = FindOperation(startPosition),
+                Arguments = FindArguments(startPosition),
+                UpdatePosition = FindUpdateIndex(startPosition)
             };
         }
 
@@ -70,6 +70,11 @@ namespace AdventLibrary
                 default:
                     break;
             }
+        }
+
+        public void RunIntCode()
+        {
+            
         }
     }
 
