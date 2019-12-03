@@ -101,5 +101,24 @@ namespace AdventLibrary.Tests
             actual.Arguments.ShouldBe(expected.Arguments);
             actual.UpdatePosition.ShouldBe(expected.UpdatePosition);
         }
+
+        [Fact]
+        public void ExecuteAdditionCodeSegment()
+        {
+            var input = "1,9,10,3,2,3,11,0,99,30,40,50";
+            var testSegment = new CodeSegment
+            {
+                Index = 0,
+                OpCode = OpCodes.Addition,
+                Arguments = (30, 40),
+                UpdatePosition = 3
+            };
+            int[] expected = new int[] { 1, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50 };
+            var intProcessor = new IntCodeProcessor(input);
+
+            intProcessor.RunSegment(testSegment);
+
+            intProcessor.Code.ShouldBe(expected);
+        }
     }
 }

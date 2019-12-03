@@ -51,6 +51,22 @@ namespace AdventLibrary
                 UpdatePosition = FindUpdateIndex()
             };
         }
+
+        public void RunSegment(CodeSegment segment)
+        {
+            switch (segment.OpCode)
+            {
+                case OpCodes.Addition:
+                    var args = segment.Arguments;
+                    var result = args.Item1 + args.Item2;
+                    Code[segment.UpdatePosition] = result;
+                    break;
+                case OpCodes.Multiplication:
+                case OpCodes.Stop:
+                default:
+                    break;
+            }
+        }
     }
 
     public enum OpCodes
