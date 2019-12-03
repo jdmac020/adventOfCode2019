@@ -49,10 +49,23 @@ namespace AdventLibrary
 
         public CodeSegment GenerateCodeSegment(int startPosition)
         {
+            var code = FindOperation(startPosition);
+
+            if (code == OpCodes.Stop)
+            {
+                return new CodeSegment
+                {
+                    Index = startPosition,
+                    OpCode = code,
+                    Arguments = (-1, -1),
+                    UpdatePosition = -1
+                };
+            }
+
             return new CodeSegment
             {
                 Index = startPosition,
-                OpCode = FindOperation(startPosition),
+                OpCode = code,
                 Arguments = FindArguments(startPosition),
                 UpdatePosition = FindUpdateIndex(startPosition)
             };

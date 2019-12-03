@@ -103,6 +103,27 @@ namespace AdventLibrary.Tests
         }
 
         [Fact]
+        public void GeneratePartialCodeSegmentIfStop()
+        {
+            var input = "1,9,10,3,2,3,11,0,99,30,40,50";
+            var expected = new CodeSegment
+            {
+                Index = 8,
+                OpCode = OpCodes.Stop,
+                Arguments = (-1, -1),
+                UpdatePosition = -1
+            };
+            var intProcessor = new IntCodeProcessor(input);
+
+            CodeSegment actual = intProcessor.GenerateCodeSegment(8);
+
+            actual.Index.ShouldBe(expected.Index);
+            actual.OpCode.ShouldBe(expected.OpCode);
+            actual.Arguments.ShouldBe(expected.Arguments);
+            actual.UpdatePosition.ShouldBe(expected.UpdatePosition);
+        }
+
+        [Fact]
         public void ExecuteAdditionCodeSegment()
         {
             var input = "1,9,10,3,2,3,11,0,99,30,40,50";
@@ -159,7 +180,7 @@ namespace AdventLibrary.Tests
             intProcessor.Code.ShouldBe(expected);
         }
 
-        [Fact(Skip = "Fix argument values")]
+        [Fact(Skip = "Prevent out of bounds on stop segment")]
         public void ExecuteAllSegements()
         {
             var input = "1,9,10,3,2,3,11,0,99,30,40,50";
