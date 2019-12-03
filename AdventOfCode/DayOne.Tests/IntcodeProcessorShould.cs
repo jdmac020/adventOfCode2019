@@ -58,5 +58,16 @@ namespace AdventLibrary.Tests
 
             Should.Throw<InvalidEnumArgumentException>(() => intProcessor.FindOperation());
         }
+
+        [Fact]
+        public void FindArgumentsToOperateOn()
+        {
+            var input = "1,3,3,1";
+            var intProcessor = new IntCodeProcessor(input);
+
+            (int, int) result = intProcessor.FindArguments();
+
+            result.ShouldBe((3, 3));
+        }
     }
 }

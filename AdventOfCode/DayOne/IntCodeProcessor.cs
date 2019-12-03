@@ -30,6 +30,11 @@ namespace AdventLibrary
                     throw new InvalidEnumArgumentException("OpCode", valueAtZero, typeof(OpCodes));
             }
         }
+
+        public (int, int) FindArguments()
+        {
+            return (Code[1],Code[2]);
+        }
     }
 
     public enum OpCodes
