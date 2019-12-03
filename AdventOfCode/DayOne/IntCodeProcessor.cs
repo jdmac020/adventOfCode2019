@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 
 namespace AdventLibrary
@@ -23,11 +24,11 @@ namespace AdventLibrary
                     return OpCodes.Addition;
                 case (int)OpCodes.Multiplication:
                     return OpCodes.Multiplication;
+                case (int)OpCodes.Stop:
+                    return OpCodes.Stop;
                 default:
-                    break;
+                    throw new InvalidEnumArgumentException("OpCode", valueAtZero, typeof(OpCodes));
             }
-            
-            return (OpCodes)99;
         }
     }
 

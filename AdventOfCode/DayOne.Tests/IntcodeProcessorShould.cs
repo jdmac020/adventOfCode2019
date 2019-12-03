@@ -1,5 +1,6 @@
 ﻿using Xunit;
 using Shouldly;
+using System.ComponentModel;
 
 namespace AdventLibrary.Tests
 {
@@ -47,6 +48,15 @@ namespace AdventLibrary.Tests
             OpCodes actual = intProcessor.FindOperation();
 
             actual.ShouldBe(OpCodes.Stop);
+        }
+
+        [Fact]
+        public void ThrowExceptionWithBadOpCode()
+        {
+            var input = "4,30,40,50";
+            var intProcessor = new IntCodeProcessor(input);
+
+            Should.Throw<InvalidEnumArgumentException>(() => intProcessor.FindOperation());
         }
     }
 }
