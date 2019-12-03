@@ -69,5 +69,16 @@ namespace AdventLibrary.Tests
 
             result.ShouldBe((3, 3));
         }
+
+        [Fact]
+        public void FindIndexToUpdate()
+        {
+            var input = "1,3,3,1";
+            var intProcessor = new IntCodeProcessor(input);
+
+            int result = intProcessor.FindUpdateIndex();
+
+            result.ShouldBe(1);
+        }
     }
 }

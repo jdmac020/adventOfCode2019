@@ -35,6 +35,11 @@ namespace AdventLibrary
         {
             return (Code[1],Code[2]);
         }
+
+        public int FindUpdateIndex()
+        {
+            return Code[3];
+        }
     }
 
     public enum OpCodes
