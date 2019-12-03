@@ -139,5 +139,24 @@ namespace AdventLibrary.Tests
 
             intProcessor.Code.ShouldBe(expected);
         }
+
+        [Fact]
+        public void ExecuteStopCodeSegment()
+        {
+            var input = "1,9,10,3,2,3,11,0,99,30,40,50";
+            var testSegment = new CodeSegment
+            {
+                Index = 8,
+                OpCode = OpCodes.Stop,
+                Arguments = (30, 50),
+                UpdatePosition = 50
+            };
+            int[] expected = new int[] { 1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50 };
+            var intProcessor = new IntCodeProcessor(input);
+
+            intProcessor.RunSegment(testSegment);
+
+            intProcessor.Code.ShouldBe(expected);
+        }
     }
 }
