@@ -191,5 +191,17 @@ namespace AdventLibrary.Tests
 
             intProcessor.Code.ShouldBe(expected);
         }
+
+        [Fact]
+        public void ExecuteAdditionalSegements()
+        {
+            var input = "1,1,1,4,99,5,6,0,99";
+            int[] expected = new int[] { 30, 1, 1, 4, 2, 5, 6, 0, 99 };
+            var intProcessor = new IntCodeProcessor(input);
+
+            intProcessor.RunIntCode();
+
+            intProcessor.Code.ShouldBe(expected);
+        }
     }
 }
