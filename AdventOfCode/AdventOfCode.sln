@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DayOne", "DayOne\DayOne.csproj", "{6D027281-7BA5-456D-9913-44B21328B715}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventLibrary", "DayOne\AdventLibrary.csproj", "{6D027281-7BA5-456D-9913-44B21328B715}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DayOne.Tests", "DayOne.Tests\DayOne.Tests.csproj", "{43CD4186-C9DA-4554-B39B-7D55FBBF8391}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventLibrary.Tests", "DayOne.Tests\AdventLibrary.Tests.csproj", "{43CD4186-C9DA-4554-B39B-7D55FBBF8391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayOneApp", "DayOneApp\DayOneApp.csproj", "{85253F83-C708-453E-8B08-55E24149AC70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventApp", "DayOneApp\AdventApp.csproj", "{85253F83-C708-453E-8B08-55E24149AC70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
